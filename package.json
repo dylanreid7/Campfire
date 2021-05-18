@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start-dev": "nodemon server/index.js",
+    "start": "live-server ./dist/"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,12 @@
   },
   "homepage": "http://www.github.com",
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "babel-polyfill": "^6.26.0",
     "express": "^4.17.0",
+    "live-server": "^1.2.1",
+    "mongoose": "^5.12.9",
     "mysql": "^2.18.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
