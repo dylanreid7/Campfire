@@ -11,7 +11,14 @@ app.use(express.static(__dirname + "/../dist"));
 
 app.get('/getCampsites', (req, res, next) => {
   console.log('received server request');
-  const url = 'https://ridb.recreation.gov/api/v1/facilities/251452/campsites?query=overnight&limit=1000&offset=0';
+  console.log('latitude, i think: ', req.query.latitude);
+  console.log('longitude, i think: ', req.query.longitude);
+  const latitude = req.query.latitude;
+  const longitude = req.query.longitude;
+
+  const url = 'https://ridb.recreation.gov/api/v1/facilities?';
+  const query = `latitude=${latitude}&longitude=${longitude}&activity=CAMPING&full=true`;
+  const fullUrl = url + query;
   const getRequestConfig = {
     headers: {
       // 'Access-Control-Allow-Origin': '*',
@@ -21,10 +28,10 @@ app.get('/getCampsites', (req, res, next) => {
       // 'accept': 'application/json'
     }
   };
-  axios.get(url, getRequestConfig)
-    .then((data) => {
-      console.log('sending data');
-      res.send(data.data);
+  axios.get(fullUrl, getRequestConfig)
+    .then((campingFacilityResults) => {
+      console.log('sending campingFacilityResults');
+      res.send(campingFacilityResults.data.RECDATA);
     })
     .catch((err) => {console.error(err)})
 })

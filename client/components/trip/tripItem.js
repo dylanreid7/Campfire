@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 
-export default function TripItem({ trip }) {
-  console.log('trip', trip);
+export default function TripItem({ facility }) {
+  console.log('facility', facility);
   return (
     <>
-      <img src={trip.RecAreaMapURL}></img>
-      <Typography>{trip.RecAreaName}</Typography>
-      <Typography>{trip.RecAreaPhone}</Typography>
+      <img src={facility.MEDIA[0].URL}></img>
+      <Typography>{facility.FacilityName}</Typography>
+      <Typography>{facility.FacilityPhone}</Typography>
     </>
   );
 }

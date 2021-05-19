@@ -2,12 +2,18 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import TripItem from './tripItem.js'
 
-export default function TripList({ dummyDataRecAreas, dummyDataFacilities, dummyDataCampsite }) {
+export default function TripList({ dummyDataRecAreas, facilities, dummyDataCampsite }) {
+  console.log('facilities: ', facilities);
+  if (!facilities) {
+    return (
+      <Typography>Your Trips</Typography>
+    )
+  }
   return (
     <>
       <Typography>Your Trips</Typography>
-      {dummyDataRecAreas.RECDATA.map((trip, i) => {
-        return <TripItem trip={trip} key={i}/>
+      {facilities.map((facility, i) => {
+        return <TripItem facility={facility} key={i}/>
       })}
     </>
   );

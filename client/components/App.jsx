@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchInputs from './searchInputs.js';
 import TripList from './trip/tripList.js';
 import { dummyDataRecAreas, dummyDataFacilities, dummyDataCampsites } from '../../data/dummyData.js';
@@ -42,7 +42,9 @@ const theme = createMuiTheme({
 
 
 const App = () => {
-  const getFacilities = (lat, long) => {
+  const [facilityData, setFacilityData] = useState(null);
+
+  const getFacilities = (latitude, longitude) => {
     console.log('getting facilities');
     const url = 'https://ridb.recreation.gov/api/v1/facilities/251452/campsites?query=overnight&limit=1000&offset=0';
     const getRequestConfig = {
@@ -57,9 +59,10 @@ const App = () => {
     // app.get('/getCampsites', (req, res, next) => {
     //   console.log('res: ', res);
     // })
-    axios.get('http://localhost:3000/getCampsites')
-      .then((results) => {
-        console.log('results: ', results);
+    axios.get(`http://localhost:3000/getCampsites?latitude=${latitude}&longitude=${longitude}`)
+      .then((facilityInfo) => {
+        console.log('results: ', facilityInfo);
+        setFacilityData(facilityInfo.data);
       })
       .catch((err) => {console.error(err)})
   }
@@ -74,7 +77,7 @@ const App = () => {
         <Grid item xs={4}>
           <TripList
             dummyDataRecAreas={dummyDataRecAreas}
-            dummyDataFacilities={dummyDataFacilities}
+            facilities={facilityData}
             dummyDataCampsites={dummyDataCampsites}
           />
         </Grid>
