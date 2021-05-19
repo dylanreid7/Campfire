@@ -1,10 +1,11 @@
 const express = require('express')
-var cors = require('cors');
+const cors = require('cors');
 const axios = require('axios');
 const config = require('../config.js');
 const app = express()
 const port = 3000
 app.use(cors());
+app.use(express.json());
 
 
 app.use(express.static(__dirname + "/../dist"));
@@ -60,7 +61,8 @@ app.get('/getCampsites', (req, res, next) => {
 })
 
 app.post('/postCampsite', (req, res, next) => {
-
+  console.log('campsite data: ', req.body);
+  res.status(201).end();
 })
 
 app.get('/', (req, res) => {

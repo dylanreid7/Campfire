@@ -56,7 +56,13 @@ export default function CampsiteItem({ campsite }) {
 
   const handleClick = () => {
     console.log('clicked campsite: ', campsite);
-    axios.post('http://localhost:3000/postCampsite', campsite)
+    axios.post('http://localhost:3000/postCampsite', {
+      campsiteName: campsite.CampsiteName,
+      checkInDate: '1/1/11',
+      checkOutDate: '2/2/22',
+      pictureUrl: campsite.ENTITYMEDIA[0].URL,
+      facilityName: campsite.Loop
+    })
       .then((response) => {
         console.log('response: ', response);
       })
