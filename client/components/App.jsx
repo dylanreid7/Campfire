@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchInputs from './searchInputs.js';
+import SearchResults from './searchResults/searchResults.js';
 import TripList from './trip/tripList.js';
 import { dummyDataRecAreas, dummyDataFacilities, dummyDataCampsites } from '../../data/dummyData.js';
 import { Grid, Typography } from '@material-ui/core';
@@ -72,7 +73,19 @@ const App = () => {
       <Typography>Campfire</Typography>
       <Grid container>
         <Grid item xs={8}>
-          <SearchInputs getFacilities={getFacilities}/>
+          <Grid item>
+            <SearchInputs getFacilities={getFacilities}/>
+          </Grid>
+          <Grid item>
+            { facilityData ?
+              <SearchResults
+                facilities={facilityData}
+              /> :
+              <div id="search-picture">
+                <img src="https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"></img>
+              </div>
+            }
+          </Grid>
         </Grid>
         <Grid item xs={4}>
           <TripList
