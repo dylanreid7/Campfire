@@ -1,11 +1,17 @@
 import React from 'react';
 import SearchInputs from './searchInputs.js';
 import TripList from './trip/tripList.js';
-import { dummyDataRecAreas, dummyDataFacilities, dummyDataCampsites } from './dummyData.js';
+import { dummyDataRecAreas, dummyDataFacilities, dummyDataCampsites } from '../../data/dummyData.js';
 import { Grid, Typography } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import axios from 'axios';
 import config from '../../config.js';
+// var express = require('express');
+// var cors = require('cors');
+// var app = express();
+
+// app.use(cors());
+
 
 const theme = createMuiTheme({
   palette: {
@@ -42,15 +48,20 @@ const App = () => {
     const getRequestConfig = {
       headers: {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         'crossdomain': true,
         'Authorization': config.recreationGovAPIKey,
         'accept': 'application/json'
       }
     };
-    axios.get(url, getRequestConfig)
+    // app.get('/getCampsites', (req, res, next) => {
+    //   console.log('res: ', res);
+    // })
+    axios.get('http://localhost:3000/getCampsites')
       .then((results) => {
         console.log('results: ', results);
       })
+      .catch((err) => {console.error(err)})
   }
 
   return (

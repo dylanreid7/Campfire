@@ -14,6 +14,7 @@ module.exports = {
       {
         test: /\.js?/,
         include: SRC_DIR,
+        exclude: path.resolve(__dirname, 'node_modules/', 'data/'),
         use: {
           loader: 'babel-loader',
           options: {
@@ -25,5 +26,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
+  },
+  node: {
+    'fs': 'empty',
+    'net': 'empty'
   }
 };
