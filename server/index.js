@@ -59,6 +59,10 @@ app.get('/getCampsites', (req, res, next) => {
     })
 })
 
+app.post('/postCampsite', (req, res, next) => {
+
+})
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

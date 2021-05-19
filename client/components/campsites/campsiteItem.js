@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, Typography, Card, CardActions, CardContent, Button, CardMedia } from '@material-ui/core';
+import axios from 'axios';
 
 
 const useStyles = makeStyles({
@@ -51,6 +52,17 @@ export default function CampsiteItem({ campsite }) {
     imageUrl = campsite.ENTITYMEDIA[0].URL;
   } else {
     imageUrl = 'https://images.unsplash.com/photo-1445308394109-4ec2920981b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80';
+  }
+
+  const handleClick = () => {
+    console.log('clicked campsite: ', campsite);
+    axios.post('http://localhost:3000/postCampsite', campsite)
+      .then((response) => {
+        console.log('response: ', response);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
 
