@@ -44,6 +44,7 @@ const theme = createMuiTheme({
 
 const App = () => {
   const [facilityData, setFacilityData] = useState(null);
+  const [campsiteData, setCampsiteData] = useState(null);
 
   const getFacilities = (latitude, longitude) => {
     console.log('getting facilities');
@@ -60,12 +61,37 @@ const App = () => {
     // app.get('/getCampsites', (req, res, next) => {
     //   console.log('res: ', res);
     // })
-    axios.get(`http://localhost:3000/getCampsites?latitude=${latitude}&longitude=${longitude}`)
+    axios.get(`http://localhost:3000/getFacilities?latitude=${latitude}&longitude=${longitude}`)
       .then((facilityInfo) => {
         console.log('results: ', facilityInfo);
         setFacilityData(facilityInfo.data);
+        return facilityInfo.data;
       })
-      .catch((err) => {console.error(err)})
+      .then((facilities) => {
+        let allCampsites = {};
+        for (let i = 0; i < facilities.length; i++) {
+          let facilityId = facilities[i].FacilityID;
+          axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
+            .then((campsiteInfo) => {
+              console.log('campsite info: ', campsiteInfo);
+              allCampsites[facilityId] = campsiteInfo.data;
+              console.log('allCampsites: ', allCampsites);
+              setCampsiteData[allCampsites];
+            })
+          }
+        })
+        .catch((err) => {console.error(err)})
+
+    // console.log('campsiteData: ', campsiteData);
+
+    // axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
+    // .then((campsiteInfo) => {
+    //   console.log('campsite info: ', campsiteInfo.data);
+    //   setCampsiteData(campsiteInfo.data);
+    // })
+    // .catch((err) => {
+    //   console.error(err);
+    // })
   }
 
   return (
@@ -77,14 +103,10 @@ const App = () => {
             <SearchInputs getFacilities={getFacilities}/>
           </Grid>
           <Grid item>
-            { facilityData ?
               <SearchResults
                 facilities={facilityData}
-              /> :
-              <div id="search-picture">
-                <img src="https://images.unsplash.com/photo-1532339142463-fd0a8979791a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"></img>
-              </div>
-            }
+                campsites={campsiteData}
+              />
           </Grid>
         </Grid>
         <Grid item xs={4}>

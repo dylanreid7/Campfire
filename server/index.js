@@ -9,7 +9,7 @@ app.use(cors());
 
 app.use(express.static(__dirname + "/../dist"));
 
-app.get('/getCampsites', (req, res, next) => {
+app.get('/getFacilities', (req, res, next) => {
   console.log('received server request');
   console.log('latitude, i think: ', req.query.latitude);
   console.log('longitude, i think: ', req.query.longitude);
@@ -34,6 +34,29 @@ app.get('/getCampsites', (req, res, next) => {
       res.send(campingFacilityResults.data.RECDATA);
     })
     .catch((err) => {console.error(err)})
+})
+
+app.get('/getCampsites', (req, res, next) => {
+  console.log('facility ID, I think: ', req.query.facilityId);
+  const facilityId = req.query.facilityId;
+  const url = `https://ridb.recreation.gov/api/v1/facilities/${facilityId}/campsites?offset=0`;
+  const getRequestConfig = {
+    headers: {
+      // 'Access-Control-Allow-Origin': '*',
+      // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      // 'crossdomain': true,
+      'apikey': config.recreationGovAPIKey
+      // 'accept': 'application/json'
+    }
+  };
+  axios.get(url, getRequestConfig)
+    .then((campsiteResults) => {
+      // console.log('sending campsite results: ', campsiteResults);
+      res.send(campsiteResults.data.RECDATA);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
 })
 
 app.get('/', (req, res) => {

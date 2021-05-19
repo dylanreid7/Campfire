@@ -1,9 +1,8 @@
 import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
-import TripItem from './tripItem.js'
 
-export default function TripList({ dummyDataRecAreas, facilities, dummyDataCampsite }) {
-  console.log('facilities: ', facilities);
+export default function CampsiteItem({ campsite }) {
+  console.log('campsite: ', campsite);
   // if (!facilities) {
   //   return (
   //     <Typography>Your Trips</Typography>
@@ -11,12 +10,12 @@ export default function TripList({ dummyDataRecAreas, facilities, dummyDataCamps
   // }
   return (
     <>
-      <Typography>Your Trips</Typography>
-      {facilities ?
+      <Typography>{campsite.CampsiteName}</Typography>
+      {/* {facilities ?
       facilities.map((facility, i) => {
         return <TripItem facility={facility} key={i}/>
       }) :
-      null }
+      null } */}
     </>
   );
 }
