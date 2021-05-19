@@ -1,12 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import TripItem from './tripItem.js'
 
-export default function TripList() {
+export default function TripList({ dummyDataRecAreas, dummyDataFacilities, dummyDataCampsite }) {
   return (
     <>
-      <div>Your Trips</div>
-      <TripItem/>
+      <Typography>Your Trips</Typography>
+      {dummyDataRecAreas.RECDATA.map((trip, i) => {
+        return <TripItem trip={trip} key={i}/>
+      })}
     </>
   );
 }

@@ -1,11 +1,13 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 
-export default function TripItem() {
+export default function TripItem({ trip }) {
+  console.log('trip', trip);
   return (
     <>
-      <div>Trip 1</div>
-      <div>Trip 2</div>
+      <img src={trip.RecAreaMapURL}></img>
+      <Typography>{trip.RecAreaName}</Typography>
+      <Typography>{trip.RecAreaPhone}</Typography>
     </>
   );
 }

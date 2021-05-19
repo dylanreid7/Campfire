@@ -5,10 +5,10 @@ import CheckOut from './searchInputs/checkOut.js';
 import Filter from './searchInputs/filter.js';
 import Grid from '@material-ui/core/Grid';
 
-const SearchInputs = () => {
+const SearchInputs = ({ getFacilities }) => {
   return (
     <Grid container>
-      <Search/>
+      <Search getFacilities={getFacilities}/>
       <CheckIn/>
       <CheckOut/>
       <Filter/>
