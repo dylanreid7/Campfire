@@ -44,7 +44,7 @@ const theme = createMuiTheme({
 
 const App = () => {
   const [facilityData, setFacilityData] = useState(null);
-  const [campsiteData, setCampsiteData] = useState(null);
+  // const [campsiteData, setCampsiteData] = useState(null);
 
   const getFacilities = (latitude, longitude) => {
     console.log('getting facilities');
@@ -67,19 +67,19 @@ const App = () => {
         setFacilityData(facilityInfo.data);
         return facilityInfo.data;
       })
-      .then((facilities) => {
-        let allCampsites = {};
-        for (let i = 0; i < facilities.length; i++) {
-          let facilityId = facilities[i].FacilityID;
-          axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
-            .then((campsiteInfo) => {
-              console.log('campsite info: ', campsiteInfo);
-              allCampsites[facilityId] = campsiteInfo.data;
-              console.log('allCampsites: ', allCampsites);
-              setCampsiteData[allCampsites];
-            })
-          }
-        })
+      // .then((facilities) => {
+      //   let allCampsites = {};
+      //   for (let i = 0; i < facilities.length; i++) {
+      //     let facilityId = facilities[i].FacilityID;
+      //     axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
+      //       .then((campsiteInfo) => {
+      //         console.log('campsite info: ', campsiteInfo);
+      //         allCampsites[facilityId] = campsiteInfo.data;
+      //         console.log('allCampsites: ', allCampsites);
+      //         setCampsiteData[allCampsites];
+      //       })
+      //     }
+      //   })
         .catch((err) => {console.error(err)})
 
     // console.log('campsiteData: ', campsiteData);
@@ -105,15 +105,13 @@ const App = () => {
           <Grid item>
               <SearchResults
                 facilities={facilityData}
-                campsites={campsiteData}
+                // campsites={campsiteData}
               />
           </Grid>
         </Grid>
         <Grid item xs={4}>
           <TripList
-            dummyDataRecAreas={dummyDataRecAreas}
             facilities={facilityData}
-            dummyDataCampsites={dummyDataCampsites}
           />
         </Grid>
       </Grid>

@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import TripItem from './tripItem.js'
 
-export default function TripList({ dummyDataRecAreas, facilities, dummyDataCampsite }) {
+export default function TripList({ facilities }) {
   console.log('facilities: ', facilities);
   // if (!facilities) {
   //   return (

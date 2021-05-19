@@ -12,14 +12,14 @@ export default function SearchResults({ facilities, campsites }) {
       </div>
     )
   }
-  if (!campsites) {
+  if (campsites) {
     console.log('campsites: ', campsites);
     const facilitiesAndCampsites = [];
     for (let i = 0; i < facilities.length; i++) {
       facilities[i].campsites = campsites[facilities[i].FacilityID];
     }
-    console.log('facilities and campsites: ', facilitiesAndCampsites);
   }
+  console.log('facilities and campsites: ', facilities);
   return (
     <>
       {facilities.map((facility, i) => {

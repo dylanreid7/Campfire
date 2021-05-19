@@ -42,17 +42,37 @@ export default function SearchItem({ facility }) {
   console.log('facility', facility);
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  // const bull = <span className={classes.bullet}>•</span>;
   let imageUrl;
   if (facility.MEDIA.length > 0) {
     imageUrl = facility.MEDIA[0].URL;
   } else {
     imageUrl = 'https://images.unsplash.com/photo-1445308394109-4ec2920981b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80';
   }
-  const facilityId = facility.FacilityID;
+  // const facilityId = facility.FacilityID;
 
   const handleClick = () => {
     setCampsitesShown(true);
+    let facilityId = facility.FacilityID;
+    axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
+      .then((campsiteInfo) => {
+        console.log('campsite info: ', campsiteInfo);
+        let length;
+        if (campsiteInfo.data.length < 5) {
+          length = campsiteInfo.length;
+        } else {
+          length = 5;
+        }
+        let campsitesShortList = [];
+        for (let i = 0; i < length; i++) {
+          campsitesShortList.push(campsiteInfo.data[i]);
+        }
+        console.log('campsite short list: ', campsitesShortList);
+        setCampsiteData(campsitesShortList);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
   return (
@@ -96,7 +116,7 @@ export default function SearchItem({ facility }) {
           </div>
         </div>
       </Card>
-      { campsitesShown ?
+      { campsiteData ?
         <CampsiteList campsites={campsiteData}/>
         :
         null
