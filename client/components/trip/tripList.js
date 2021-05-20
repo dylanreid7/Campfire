@@ -4,7 +4,7 @@ import TripItem from './tripItem.js';
 import axios from 'axios';
 // import getAllTrips from '../../../server/db/index.js';
 
-export default function TripList() {
+export default function TripList({ checkInDate, checkOutDate }) {
   const [trips, setTrips] = useState(null);
   // console.log('facilities: ', facilities);
   // if (!facilities) {
@@ -30,7 +30,7 @@ export default function TripList() {
     .catch((err) => {
       console.error(err);
     })
-  })
+  }, []);
 
   // let trips = getAllTrips();
   return (
@@ -38,7 +38,7 @@ export default function TripList() {
       <Typography>Your Trips</Typography>
       {trips ?
       trips.map((trip, i) => {
-        return <TripItem trip={trip} key={i}/>
+        return <TripItem trip={trip} checkInDate={checkInDate} checkOutDate={checkOutDate} key={i}/>
       }) :
       null }
     </>

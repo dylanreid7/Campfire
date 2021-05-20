@@ -80,6 +80,8 @@ const useStyles = makeStyles({
 const App = () => {
   const [facilityData, setFacilityData] = useState(null);
   const [trips, setTrips] = useState(null);
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
   // const [campsiteData, setCampsiteData] = useState(null);
   const classes = useStyles();
 
@@ -131,7 +133,15 @@ const App = () => {
     // })
   }
 
+  const changeCheckInDate = (date) => {
+    console.log('ci date: ', date);
+    setCheckInDate(date);
+  }
 
+  const changeCheckOutDate = (date) => {
+    console.log('co date: ', date);
+    setCheckOutDate(date);
+  }
 
 
   return (
@@ -151,11 +161,16 @@ const App = () => {
       <Grid container>
         <Grid item xs={7} className={classes.smallSpacing}>
           <Grid item>
-            <SearchInputs getFacilities={getFacilities}/>
+            <SearchInputs
+            getFacilities={getFacilities}
+            changeCheckInDate={changeCheckInDate}
+            changeCheckOutDate={changeCheckOutDate}/>
           </Grid>
           <Grid item>
               <SearchResults
                 facilities={facilityData}
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
                 // campsites={campsiteData}
               />
           </Grid>
@@ -164,6 +179,8 @@ const App = () => {
           <TripList
             // facilities={facilityData}
             // trips={trips}
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
           />
         </Grid>
       </Grid>

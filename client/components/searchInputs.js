@@ -5,12 +5,12 @@ import CheckOut from './searchInputs/checkOut.js';
 import Filter from './searchInputs/filter.js';
 import Grid from '@material-ui/core/Grid';
 
-const SearchInputs = ({ getFacilities }) => {
+const SearchInputs = ({ getFacilities, changeCheckInDate, changeCheckOutDate }) => {
   return (
     <Grid container>
       <Search getFacilities={getFacilities}/>
-      <CheckIn/>
-      <CheckOut/>
+      <CheckIn changeCheckInDate={changeCheckInDate}/>
+      <CheckOut changeCheckOutDate={changeCheckOutDate}/>
       {/* <Filter/> */}
     </Grid>
   )

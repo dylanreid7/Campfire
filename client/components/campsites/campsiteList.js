@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import CampsiteItem from './campsiteItem.js'
 
-export default function CampsiteList({ campsites }) {
+export default function CampsiteList({ campsites, checkInDate, checkOutDate }) {
   console.log('campsites: ', campsites);
   // const campsites = facility.campsites;
   // let length;
@@ -25,7 +25,12 @@ export default function CampsiteList({ campsites }) {
       {/* <Typography>I'm about to show campsites baby!</Typography> */}
       { campsites ?
         campsites.map((campsite, i) =>  {
-          return <CampsiteItem campsite={campsite} key={i}/>
+          return <CampsiteItem
+            campsite={campsite}
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            key={i}
+          />
         })
         :
         null

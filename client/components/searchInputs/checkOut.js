@@ -15,12 +15,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CheckOut() {
+export default function CheckOut({ changeCheckOutDate }) {
   const classes = useStyles();
   var now = new Date();
   now.setDate(now.getDate() + 1);
   const checkOutDate = dateFormat(now, "yyyy-mm-dd");
   console.log(checkOutDate);
+  const handleChange = (e) => {
+    changeCheckOutDate(e.target.value);
+  }
   return (
     <form className={classes.container} noValidate>
       <TextField
@@ -30,6 +33,7 @@ export default function CheckOut() {
         type="date"
         defaultValue={checkOutDate}
         className={classes.textField}
+        onChange={handleChange}
         InputLabelProps={{
           shrink: true,
         }}

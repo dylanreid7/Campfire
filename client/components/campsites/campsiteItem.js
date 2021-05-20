@@ -39,8 +39,10 @@ const useStyles = makeStyles({
 
 
 
-export default function CampsiteItem({ campsite }) {
+export default function CampsiteItem({ campsite, checkInDate, checkOutDate }) {
   console.log('campsite: ', campsite);
+  console.log('ci d bleh: ', checkInDate);
+  console.log('co d bleh: ', checkOutDate);
   // if (!facilities) {
   //   return (
   //     <Typography>Your Trips</Typography>
@@ -58,8 +60,8 @@ export default function CampsiteItem({ campsite }) {
     console.log('clicked campsite: ', campsite);
     axios.post('http://localhost:3000/postCampsite', {
       campsiteName: campsite.CampsiteName,
-      checkInDate: '1/1/11',
-      checkOutDate: '2/2/22',
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
       pictureUrl: campsite.ENTITYMEDIA[0].URL,
       facilityName: campsite.Loop
     })

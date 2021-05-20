@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
-    width: 700,
+    width: 500,
+    height: 170
   },
   bullet: {
     display: 'inline-block',
@@ -23,8 +24,8 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   image: {
-    height: 200,
-    width: 200
+    height: 150,
+    width: 150
   },
   divider: {
     display: 'flex',
@@ -71,14 +72,17 @@ export default function TripItem({ trip }) {
           />
           <div className={classes.details}>
             <CardContent className={classes.details}>
-              <Typography variant="h2">
+              <Typography variant="h5">
                 {trip.facilityName}
               </Typography>
-              <Typography className={classes.title} variant="h5" component="h2">
-                {trip.campsiteName}
+              <Typography className={classes.title} variant="caption">
+                {`Campsite Number: ${trip.campsiteName}`}
               </Typography>
               <Typography variant="caption">
-                {`Check in date: ${trip.checkInDate}, ${trip.checkOutDate}`}
+                {`Check in date: ${trip.checkInDate}`}
+              </Typography>
+              <Typography variant="caption">
+                {`Check out date: ${trip.checkOutDate}`}
               </Typography>
               {/* <Typography className={classes.pos} color="textSecondary">
                 adjective

@@ -36,10 +36,10 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchItem({ facility }) {
+export default function SearchItem({ facility, checkInDate, checkOutDate }) {
   const [campsitesShown, setCampsitesShown] = useState(false);
   const [campsiteData, setCampsiteData] = useState(null);
-  console.log('facility', facility);
+  // console.log('facility', facility);
 
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
@@ -117,7 +117,11 @@ export default function SearchItem({ facility }) {
         </div>
       </Card>
       { campsiteData ?
-        <CampsiteList campsites={campsiteData}/>
+        <CampsiteList
+          campsites={campsiteData}
+          checkInDate={checkInDate}
+          checkOutDate={checkOutDate}
+        />
         :
         null
       }

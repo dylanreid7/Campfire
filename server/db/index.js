@@ -10,8 +10,8 @@ connection.once('open', () => {
 
 const tripSchema = new mongoose.Schema({
   campsiteName: 'String',
-  checkInDate: 'Date',
-  checkOutDate: 'Date',
+  checkInDate: 'String',
+  checkOutDate: 'String',
   pictureUrl: 'String',
   facilityName: 'String'
 })
@@ -35,6 +35,7 @@ const addTrip = (tripInputs) => {
 }
 
 const removeTrip = (campsiteName) => {
+  console.log('del campsite name: ', campsiteName);
   Trip.deleteOne({campsiteName}, (err) => {
     if (err) return console.error(err);
     console.log(`deleted ${campsiteName} from database.`);

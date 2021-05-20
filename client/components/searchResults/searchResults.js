@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import SearchItem from './searchItem.js';
 
-export default function SearchResults({ facilities, campsites }) {
+export default function SearchResults({ facilities, campsites, checkInDate, checkOutDate }) {
   console.log('campsites: ', campsites);
 
   if (!facilities) {
@@ -23,7 +23,11 @@ export default function SearchResults({ facilities, campsites }) {
   return (
     <>
       {facilities.map((facility, i) => {
-        return <SearchItem facility={facility} key={i}/>
+        return <SearchItem
+          facility={facility} checkInDate={checkInDate}
+          checkOutDate={checkOutDate}
+          key={i}
+        />
       })}
     </>
   );
