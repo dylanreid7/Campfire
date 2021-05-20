@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const Trips = require('./model.js');
-const connection = require('./db.js');
+const Trip = require('./model.js');
+const connection = require('./index.js');
 
 const addTrip = (tripInputs) => {
-
+  let { campsiteName, checkInDate, checkOutDate, pictureUrl, facilityName } = tripInputs;
   const addedTrip = new Trip({
-    campsiteName: 'String',
-    checkInDate: 'Date',
-    checkOutDate: 'Date',
-    pictureUrl: 'String',
-    facilityName: 'String'
+    campsiteName,
+    checkInDate,
+    checkOutDate,
+    pictureUrl,
+    facilityName
   });
 
   addedTrip.save((err, campsite) => {

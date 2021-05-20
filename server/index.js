@@ -2,8 +2,9 @@ const express = require('express')
 const cors = require('cors');
 const axios = require('axios');
 const config = require('../config.js');
-const app = express()
-const port = 3000
+const { addTrip, removeTrip, getAllTrips } = require('../server/db/index.js');
+const app = express();
+const port = 3000;
 app.use(cors());
 app.use(express.json());
 
@@ -62,7 +63,26 @@ app.get('/getCampsites', (req, res, next) => {
 
 app.post('/postCampsite', (req, res, next) => {
   console.log('campsite data: ', req.body);
+  addTrip(req.body);
   res.status(201).end();
+})
+
+app.delete('/deleteCampsite', (req, res, next) => {
+  console.log('removing campsite: ', req.body);
+  removeTrip(req.body);
+  res.status(204).end();
+})
+
+app.get('/getAllTrips', (req, res, next) => {
+  console.log('getting all trips.');
+  const query = getAllTrips();
+  query.exec((err, trips) => {
+    if (err) {
+      console.error(err);
+    } else {
+      res.send(trips);
+    }
+  });
 })
 
 app.get('/', (req, res) => {

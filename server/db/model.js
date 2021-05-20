@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connection = require('./db.js');
+const connection = require('./index.js');
 
 const tripSchema = new mongoose.Schema({
   campsiteName: 'String',
@@ -9,6 +9,4 @@ const tripSchema = new mongoose.Schema({
   facilityName: 'String'
 })
 
-const Trips = mongoose.model('Trips', tripSchema);
-
-module.exports = Trips;
+module.export = mongoose.model('trips', tripSchema);

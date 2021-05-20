@@ -17,16 +17,16 @@ import config from '../../config.js';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#FEDBD0',
-      main: '#FEDBD0',
-      dark: '#FEDBD0',
+      light: '#ff8c00',
+      main: '#ff8c00',
+      dark: '#ff8c00',
       contrastText: '#442C2E',
     },
     secondary: {
       light: '#442C2E',
       main: '#442C2E',
       dark: '#442C2E',
-      contrastText: '#FEDBD0',
+      contrastText: '#ff8c00',
     },
     text: {
       primary: '#442C2E',
@@ -37,13 +37,14 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: 'Rubik',
+    fontFamily: 'arial',
   },
 });
 
 
 const App = () => {
   const [facilityData, setFacilityData] = useState(null);
+  const [trips, setTrips] = useState(null);
   // const [campsiteData, setCampsiteData] = useState(null);
 
   const getFacilities = (latitude, longitude) => {
@@ -94,11 +95,19 @@ const App = () => {
     // })
   }
 
+
+
+
   return (
     <ThemeProvider theme={theme}>
-      <Typography>Campfire</Typography>
+      <Button
+        size="medium"
+        variant="contained"
+      >
+      Campfire
+      </Button>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={7}>
           <Grid item>
             <SearchInputs getFacilities={getFacilities}/>
           </Grid>
@@ -109,9 +118,10 @@ const App = () => {
               />
           </Grid>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={5}>
           <TripList
-            facilities={facilityData}
+            // facilities={facilityData}
+            // trips={trips}
           />
         </Grid>
       </Grid>
