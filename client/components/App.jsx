@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import SearchInputs from './searchInputs.js';
 import SearchResults from './searchResults/searchResults.js';
 import TripList from './trip/tripList.js';
@@ -79,11 +79,42 @@ const useStyles = makeStyles({
 
 const App = () => {
   const [facilityData, setFacilityData] = useState(null);
-  const [trips, setTrips] = useState(null);
+  const [trips, setTrips] = useState([]);
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
+  const [, forceUpdate] = useReducer(x => x + 1, 0);
   // const [campsiteData, setCampsiteData] = useState(null);
   const classes = useStyles();
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/getAllTrips`)
+    .then((allTrips) => {
+      console.log('all trips: ', allTrips.data);
+      if (Object.keys(allTrips.data).length === 0) {
+        return;
+      }
+      for (let i = 0; i < allTrips.length; i++) {
+        console.log('trip: ', allTrips[i]);
+        console.log('hello');
+      }
+      setTrips(allTrips.data);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+  }, []);
+
+  const inputTrip = (trip) => {
+    console.log('trip: ', trip);
+    console.log('trips: ', trips);
+    const newTrips = trips;
+    newTrips.push(trip);
+    console.log('added trips: ', newTrips);
+    setTrips(newTrips);
+    forceUpdate();
+  }
+
 
   const getFacilities = (latitude, longitude) => {
     console.log('getting facilities');
@@ -171,6 +202,7 @@ const App = () => {
                 facilities={facilityData}
                 checkInDate={checkInDate}
                 checkOutDate={checkOutDate}
+                inputTrip={inputTrip}
                 // campsites={campsiteData}
               />
           </Grid>
@@ -178,7 +210,7 @@ const App = () => {
         <Grid item xs={5}>
           <TripList
             // facilities={facilityData}
-            // trips={trips}
+            trips={trips}
             checkInDate={checkInDate}
             checkOutDate={checkOutDate}
           />

@@ -6,7 +6,7 @@ import axios from 'axios';
 const useStyles = makeStyles({
   root: {
     width: 500,
-    height: 170
+    height: 200
   },
   bullet: {
     display: 'inline-block',

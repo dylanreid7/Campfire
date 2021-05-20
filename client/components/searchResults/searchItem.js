@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchItem({ facility, checkInDate, checkOutDate }) {
+export default function SearchItem({ facility, checkInDate, checkOutDate, inputTrip }) {
   const [campsitesShown, setCampsitesShown] = useState(false);
   const [campsiteData, setCampsiteData] = useState(null);
   // console.log('facility', facility);
@@ -121,6 +121,7 @@ export default function SearchItem({ facility, checkInDate, checkOutDate }) {
           campsites={campsiteData}
           checkInDate={checkInDate}
           checkOutDate={checkOutDate}
+          inputTrip={inputTrip}
         />
         :
         null

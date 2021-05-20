@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import CampsiteItem from './campsiteItem.js'
 
-export default function CampsiteList({ campsites, checkInDate, checkOutDate }) {
+export default function CampsiteList({ campsites, checkInDate, checkOutDate, inputTrip }) {
   console.log('campsites: ', campsites);
   // const campsites = facility.campsites;
   // let length;
@@ -29,6 +29,7 @@ export default function CampsiteList({ campsites, checkInDate, checkOutDate }) {
             campsite={campsite}
             checkInDate={checkInDate}
             checkOutDate={checkOutDate}
+            inputTrip={inputTrip}
             key={i}
           />
         })

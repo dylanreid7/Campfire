@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SearchResults({ facilities, campsites, checkInDate, checkOutDate }) {
+export default function SearchResults({ facilities, campsites, checkInDate, checkOutDate, inputTrip }) {
   console.log('campsites: ', campsites);
   const classes = useStyles();
 
@@ -34,8 +34,10 @@ export default function SearchResults({ facilities, campsites, checkInDate, chec
     <>
       {facilities.map((facility, i) => {
         return <SearchItem
-          facility={facility} checkInDate={checkInDate}
+          facility={facility}
+          checkInDate={checkInDate}
           checkOutDate={checkOutDate}
+          inputTrip={inputTrip}
           key={i}
         />
       })}

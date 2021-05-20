@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 
 
 
-export default function CampsiteItem({ campsite, checkInDate, checkOutDate }) {
+export default function CampsiteItem({ campsite, checkInDate, checkOutDate, inputTrip }) {
   console.log('campsite: ', campsite);
   console.log('ci d bleh: ', checkInDate);
   console.log('co d bleh: ', checkOutDate);
@@ -58,6 +58,13 @@ export default function CampsiteItem({ campsite, checkInDate, checkOutDate }) {
 
   const handleClick = () => {
     console.log('clicked campsite: ', campsite);
+    inputTrip({
+      campsiteName: campsite.CampsiteName,
+      checkInDate: checkInDate,
+      checkOutDate: checkOutDate,
+      pictureUrl: campsite.ENTITYMEDIA[0].URL,
+      facilityName: campsite.Loop
+    })
     axios.post('http://localhost:3000/postCampsite', {
       campsiteName: campsite.CampsiteName,
       checkInDate: checkInDate,
@@ -91,10 +98,10 @@ export default function CampsiteItem({ campsite, checkInDate, checkOutDate }) {
               {campsite.CampsiteType}
             </Typography>
             <Typography variant="caption">
-              {`Max. Number of People: ${campsite.ATTRIBUTES[2].AttributeValue}`}
+              {`${campsite.ATTRIBUTES[0].AttributeName}: ${campsite.ATTRIBUTES[0].AttributeValue}`}
             </Typography>
             <Typography variant="caption">
-              {`Campfire Allowed: ${campsite.ATTRIBUTES[7].AttributeValue}`}
+              {`${campsite.ATTRIBUTES[1].AttributeName}: ${campsite.ATTRIBUTES[1].AttributeValue}`}
             </Typography>
             {/* <Typography className={classes.pos} color="textSecondary">
               adjective
