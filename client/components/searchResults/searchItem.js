@@ -57,18 +57,18 @@ export default function SearchItem({ facility }) {
     axios.get(`http://localhost:3000/getCampsites?facilityId=${facilityId}`)
       .then((campsiteInfo) => {
         console.log('campsite info: ', campsiteInfo);
-        let length;
-        if (campsiteInfo.data.length < 5) {
-          length = campsiteInfo.length;
-        } else {
-          length = 5;
-        }
-        let campsitesShortList = [];
-        for (let i = 0; i < length; i++) {
-          campsitesShortList.push(campsiteInfo.data[i]);
-        }
-        console.log('campsite short list: ', campsitesShortList);
-        setCampsiteData(campsitesShortList);
+        // let length;
+        // if (campsiteInfo.data.length < 5) {
+        //   length = campsiteInfo.length;
+        // } else {
+        //   length = 5;
+        // }
+        // let campsitesShortList = [];
+        // for (let i = 0; i < length; i++) {
+        //   campsitesShortList.push(campsiteInfo.data[i]);
+        // }
+        // console.log('campsite short list: ', campsitesShortList);
+        setCampsiteData(campsiteInfo.data);
       })
       .catch((err) => {
         console.error(err);

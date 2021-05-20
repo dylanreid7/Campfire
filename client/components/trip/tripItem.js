@@ -48,9 +48,18 @@ export default function TripItem({ trip }) {
     imageUrl = 'https://images.unsplash.com/photo-1445308394109-4ec2920981b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80';
   }
   const handleClick = () => {
-
+    setTripDeleted(true);
+    axios.delete(`http://localhost:3000/deleteCampsite`)
+      .then((info) => {
+        console.log(info);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
-
+  if (tripDeleted) {
+    return null;
+  }
   return (
     <>
       <Card className={classes.root} variant="outlined">

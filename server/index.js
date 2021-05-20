@@ -41,7 +41,7 @@ app.get('/getFacilities', (req, res, next) => {
 app.get('/getCampsites', (req, res, next) => {
   console.log('facility ID, I think: ', req.query.facilityId);
   const facilityId = req.query.facilityId;
-  const url = `https://ridb.recreation.gov/api/v1/facilities/${facilityId}/campsites?offset=0`;
+  const url = `https://ridb.recreation.gov/api/v1/facilities/${facilityId}/campsites?offset=0&limit=5`;
   const getRequestConfig = {
     headers: {
       // 'Access-Control-Allow-Origin': '*',

@@ -11,7 +11,7 @@ const SearchInputs = ({ getFacilities }) => {
       <Search getFacilities={getFacilities}/>
       <CheckIn/>
       <CheckOut/>
-      <Filter/>
+      {/* <Filter/> */}
     </Grid>
   )
 }

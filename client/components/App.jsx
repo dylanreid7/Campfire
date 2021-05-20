@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import SearchInputs from './searchInputs.js';
 import SearchResults from './searchResults/searchResults.js';
 import TripList from './trip/tripList.js';
-import { dummyDataRecAreas, dummyDataFacilities, dummyDataCampsites } from '../../data/dummyData.js';
-import { Grid, Typography } from '@material-ui/core';
+import Header from './header.js';
+import { Grid, Typography, Button, makeStyles, AppBar, Toolbar } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import axios from 'axios';
 import config from '../../config.js';
-// var express = require('express');
-// var cors = require('cors');
-// var app = express();
-
-// app.use(cors());
 
 
 const theme = createMuiTheme({
@@ -30,7 +25,7 @@ const theme = createMuiTheme({
     },
     text: {
       primary: '#442C2E',
-      secondary: '#442C2E',
+      secondary: '#FFFFFF',
     },
     background: {
       paper: '#FFFFFF',
@@ -38,7 +33,47 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: 'arial',
+  }
+});
+
+const useStyles = makeStyles({
+  root: {
+    width: 700,
   },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  content: {
+    flex: '1 0 auto'
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  image: {
+    height: 200,
+    width: 200
+  },
+  divider: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  end: {
+    display: 'flex',
+    alignItems: 'flex-end'
+  },
+  spacingBottom: {
+    marginBottom: '20px'
+  },
+  smallSpacing: {
+    marginBottom: '10px',
+    marginTop: '10px'
+  }
 });
 
 
@@ -46,6 +81,7 @@ const App = () => {
   const [facilityData, setFacilityData] = useState(null);
   const [trips, setTrips] = useState(null);
   // const [campsiteData, setCampsiteData] = useState(null);
+  const classes = useStyles();
 
   const getFacilities = (latitude, longitude) => {
     console.log('getting facilities');
@@ -100,14 +136,20 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Button
-        size="medium"
+      {/* <Button
+        size="large"
         variant="contained"
+        className={classes.spacingBottom}
       >
       Campfire
-      </Button>
+      </Button> */}
+      <AppBar position="sticky" color="primary" className={classes.spacingBottom}>
+        <Toolbar>
+          <Header/>
+        </Toolbar>
+      </AppBar>
       <Grid container>
-        <Grid item xs={7}>
+        <Grid item xs={7} className={classes.smallSpacing}>
           <Grid item>
             <SearchInputs getFacilities={getFacilities}/>
           </Grid>

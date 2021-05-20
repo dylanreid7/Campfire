@@ -42,7 +42,7 @@ export default function Search({ getFacilities }) {
     <TextField
       size="medium"
       label="Search for Campsites..."
-      variant="outlined"
+      variant="filled"
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       InputProps={{
