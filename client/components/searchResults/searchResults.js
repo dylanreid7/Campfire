@@ -9,7 +9,6 @@ const useStyles = makeStyles({
 });
 
 export default function SearchResults({ facilities, campsites, checkInDate, checkOutDate, inputTrip }) {
-  console.log('campsites: ', campsites);
   const classes = useStyles();
 
   if (!facilities) {
