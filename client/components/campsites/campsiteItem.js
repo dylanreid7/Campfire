@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, Typography, Card, CardActions, CardContent, Button, CardMedia } from '@material-ui/core';
 import axios from 'axios';
 
-
 const useStyles = makeStyles({
   root: {
     width: 400,
@@ -36,18 +35,7 @@ const useStyles = makeStyles({
   }
 });
 
-
-
-
 export default function CampsiteItem({ campsite, checkInDate, checkOutDate, inputTrip }) {
-  console.log('campsite: ', campsite);
-  console.log('ci d bleh: ', checkInDate);
-  console.log('co d bleh: ', checkOutDate);
-  // if (!facilities) {
-  //   return (
-  //     <Typography>Your Trips</Typography>
-  //   )
-  // }
   const classes = useStyles();
   let imageUrl;
   if (campsite.ENTITYMEDIA.length > 0) {
@@ -80,7 +68,6 @@ export default function CampsiteItem({ campsite, checkInDate, checkOutDate, inpu
       })
   }
 
-
   return (
     <Card className={classes.root} variant="outlined">
       <div className={classes.divider}>
@@ -103,14 +90,6 @@ export default function CampsiteItem({ campsite, checkInDate, checkOutDate, inpu
             <Typography variant="caption">
               {`${campsite.ATTRIBUTES[1].AttributeName}: ${campsite.ATTRIBUTES[1].AttributeValue}`}
             </Typography>
-            {/* <Typography className={classes.pos} color="textSecondary">
-              adjective
-            </Typography>
-            <Typography variant="body2" component="p">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography> */}
           </CardContent>
           <CardActions className="end">
             <Button
@@ -126,14 +105,3 @@ export default function CampsiteItem({ campsite, checkInDate, checkOutDate, inpu
     </Card>
   );
 }
-
-
-
-// {/* <>
-//       <Typography>{campsite.CampsiteName}</Typography>
-//       {/* {facilities ?
-//       facilities.map((facility, i) => {
-//         return <TripItem facility={facility} key={i}/>
-//       }) :
-//       null } */}
-//     </> */}

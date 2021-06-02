@@ -8,9 +8,7 @@ export default function Search({ getFacilities }) {
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
-    // get search input -> city or zip
       let latitude, longitude;
-      // figure out if it's a city or a zip, then get the latitude and longitude
       if (inputValue.length === 5 && !isNaN(inputValue)) {
         latitude = zipcodes.lookup(inputValue).latitude;
         longitude = zipcodes.lookup(inputValue).latitude;
@@ -28,7 +26,7 @@ export default function Search({ getFacilities }) {
         latitude = zips[0].latitude;
         longitude = zips[0].longitude;
       }
-      console.log(`latitude: ${latitude}, longitude: ${longitude}`);
+
       getFacilities(latitude, longitude);
     }
   }

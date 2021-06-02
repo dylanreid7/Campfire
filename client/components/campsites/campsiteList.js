@@ -3,26 +3,8 @@ import { makeStyles, Typography } from '@material-ui/core';
 import CampsiteItem from './campsiteItem.js'
 
 export default function CampsiteList({ campsites, checkInDate, checkOutDate, inputTrip }) {
-  console.log('campsites: ', campsites);
-  // const campsites = facility.campsites;
-  // let length;
-  // if (campsites.length > 5) {
-  //   length = 5;
-  // } else {
-  //   length = campsites.length;
-  // }
-  // let campsitesShortened = [];
-  // for (let i = 0; i < length; i++) {
-  //   campsitesShortened.push(campsites[i]);
-  // }
-  // if (!facilities) {
-  //   return (
-  //     <Typography>Your Trips</Typography>
-  //   )
-  // }
   return (
     <>
-      {/* <Typography>I'm about to show campsites baby!</Typography> */}
       { campsites ?
         campsites.map((campsite, i) =>  {
           return <CampsiteItem
@@ -36,11 +18,6 @@ export default function CampsiteList({ campsites, checkInDate, checkOutDate, inp
         :
         null
       }
-      {/* {facilities ?
-      facilities.map((facility, i) => {
-        return <TripItem facility={facility} key={i}/>
-      }) :
-      null } */}
     </>
   );
 }

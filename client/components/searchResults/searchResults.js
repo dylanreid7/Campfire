@@ -23,13 +23,12 @@ export default function SearchResults({ facilities, campsites, checkInDate, chec
     )
   }
   if (campsites) {
-    console.log('campsites: ', campsites);
     const facilitiesAndCampsites = [];
     for (let i = 0; i < facilities.length; i++) {
       facilities[i].campsites = campsites[facilities[i].FacilityID];
     }
   }
-  console.log('facilities and campsites: ', facilities);
+
   return (
     <>
       {facilities.map((facility, i) => {

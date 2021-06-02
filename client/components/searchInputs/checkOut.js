@@ -20,7 +20,6 @@ export default function CheckOut({ changeCheckOutDate }) {
   var now = new Date();
   now.setDate(now.getDate() + 1);
   const checkOutDate = dateFormat(now, "yyyy-mm-dd");
-  console.log(checkOutDate);
   const handleChange = (e) => {
     changeCheckOutDate(e.target.value);
   }

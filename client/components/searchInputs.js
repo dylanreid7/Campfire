@@ -11,7 +11,6 @@ const SearchInputs = ({ getFacilities, changeCheckInDate, changeCheckOutDate }) 
       <Search getFacilities={getFacilities}/>
       <CheckIn changeCheckInDate={changeCheckInDate}/>
       <CheckOut changeCheckOutDate={changeCheckOutDate}/>
-      {/* <Filter/> */}
     </Grid>
   )
 }

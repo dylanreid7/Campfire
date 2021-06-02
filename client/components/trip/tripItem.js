@@ -39,7 +39,6 @@ const useStyles = makeStyles({
 
 export default function TripItem({ trip }) {
   const [tripDeleted, setTripDeleted] = useState(false);
-  console.log('facility', trip);
   const classes = useStyles();
 
   let imageUrl;
@@ -84,14 +83,6 @@ export default function TripItem({ trip }) {
               <Typography variant="caption">
                 {`Check out date: ${trip.checkOutDate}`}
               </Typography>
-              {/* <Typography className={classes.pos} color="textSecondary">
-                adjective
-              </Typography>
-              <Typography variant="body2" component="p">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography> */}
             </CardContent>
             <CardActions className="end">
               <Button

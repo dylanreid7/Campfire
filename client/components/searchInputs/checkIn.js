@@ -19,9 +19,7 @@ export default function CheckIn({ changeCheckInDate }) {
   const classes = useStyles();
   const now = new Date();
   const checkInDate = dateFormat(now, "yyyy-mm-dd");
-  console.log(checkInDate);
   const handleChange = (e) => {
-    console.log('see date: ', e.target.value);
     changeCheckInDate(e.target.value);
   }
   return (
@@ -35,9 +33,6 @@ export default function CheckIn({ changeCheckInDate }) {
         defaultValue={checkInDate}
         className={classes.textField}
         onChange={handleChange}
-        // InputLabelProps={{
-        //   shrink: true,
-        // }}
       />
     </form>
   );
