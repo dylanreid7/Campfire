@@ -42,7 +42,7 @@
 # About
 The objective of Campfire was to build a website that allows users to search for campsites by location, then create a list of the trips they would like to go on, by date.  This was a single person project with just 48 hours given to get to an MVP.  Further details about the project can be found below.
 
-![](https://ibb.co/YNNzXCm)
+<a href="https://ibb.co/YNNzXCm"><img src="https://i.ibb.co/mRRL0jk/Screen-Shot-2021-06-08-at-11-04-48-AM.png" alt="Screen-Shot-2021-06-08-at-11-04-48-AM" border="0"></a>
 
 ## Project Overview
 **Features:**
