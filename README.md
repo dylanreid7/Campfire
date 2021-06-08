@@ -27,12 +27,13 @@
       </ul>
     </li>
     <li><a href="#project-overview">Overview</a></li>
-     <a href="#development">Development</a>
-     <ul>
-      <li><a href="#repo">Repo</a></li>
-      <li><a href="#install">Install</a></li>
-      <li><a href="#start-scripts">Start Scripts</a></li>
-      <li><a href="#github-api-token">Github API token</a></li>
+    <li>
+      <a href="#development">Development</a>
+      <ul>
+        <li><a href="#repo">Repo</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#start-scripts">Start Scripts</a></li>
+        <li><a href="#github-api-token">Github API token</a></li>
      </ul>
     </li>
   </ol>
